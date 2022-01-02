@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+    stage ('git') {
+    steps {
+    git credentialsId: 'test', url: 'git@github.com:githubmathushiva/newcicd.git'
+    }
+   } 
   stage('install') {
     steps {
      withMaven(globalMavenSettingsConfig: 'null', jdk: 'myjava', maven: 'mymaven', mavenSettingsConfig: 'null') {
